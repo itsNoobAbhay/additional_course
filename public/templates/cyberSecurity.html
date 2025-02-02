@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./../css/template.css">
+</head>
+<body>
+    <div class="payment-container">
+        <h1>Payment Details</h1>
+        <table class="payment-table">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Name of Course</td>
+                    <td>Cyber Security</td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td>Unleash the world of cyber security understanding the threats and preventive measures. Practical on Kali Linux.
+                        Learn to perform penetration testing.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Number of Credits</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Duration</td>
+                    <td>30 Hrs.</td>
+                </tr>
+                <tr>
+                    <td>Fees</td>
+                    <td>₹2800</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="pay-button" onclick="proceedToPayment()">Proceed to Payment</button>
+    </div>
+    <script>
+        function proceedToPayment() {
+            window.location.href = '/payment2';
+        }
+    </script>
+</body>
+</html>

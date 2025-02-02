@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .payment-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+        }
+
+        .payment-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .payment-header h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .payment-amount {
+            font-size: 24px;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 16px;
+            color: #718096;
+            position: relative;
+        }
+
+        .tab.active {
+            color: #4299e1;
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #4299e1;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px 0;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4a5568;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn-pay {
+            width: 100%;
+            padding: 12px;
+            background-color: #4299e1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-pay:hover {
+            background-color: #3182ce;
+        }
+
+        .upi-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .upi-option {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .upi-option.selected {
+            border-color: #4299e1;
+            background-color: #ebf8ff;
+        }
+
+        .upi-option img {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <div class="payment-header">
+            <div class="payment-amount">₹1,499.00</div>
+            <p>Select a payment method</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="cards">Cards</button>
+            <button class="tab" data-tab="upi">UPI</button>
+            <button class="tab" data-tab="netbanking">Net Banking</button>
+        </div>
+
+        <!-- Cards Section -->
+        <div id="cards" class="tab-content active">
+            <form>
+                <div class="form-group">
+                    <label>Card Number</label>
+                    <input type="text" placeholder="1234 5678 9012 3456" maxlength="19">
+                </div>
+                <div class="form-group">
+                    <label>Card Holder Name</label>
+                    <input type="text" placeholder="John Doe">
+                </div>
+                <div style="display: flex; gap: 20px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label>Expiry Date</label>
+                        <input type="text" placeholder="MM/YY">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>CVV</label>
+                        <input type="password" placeholder="***" maxlength="3">
+                    </div>
+                </div>
+                <button type="submit" class="btn-pay">Pay ₹2,800.00</button>
+            </form>
+        </div>
+
+        <!-- UPI Section -->
+        <div id="upi" class="tab-content">
+            <div class="upi-options">
+                <div class="upi-option">
+                    <img src="./../assets/gpay.jpg" alt="GPay">
+                    <div>Google Pay</div>
+                </div>
+                <div class="upi-option">
+                    <img src="./../assets/phonepay.png" alt="PhonePe">
+                    <div>PhonePe</div>
+                </div>
+                <div class="upi-option">
+                    <img src="./../assets/paytm.jpg" alt="Paytm">
+                    <div>Paytm</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>UPI ID</label>
+                <input type="text" placeholder="username@upi">
+            </div>
+            <button class="btn-pay">Pay ₹2,800.00</button>
+        </div>
+
+        <!-- Net Banking Section -->
+        <div id="netbanking" class="tab-content">
+            <div class="form-group">
+                <label>Select Bank</label>
+                <select>
+                    <option value="">Select a bank</option>
+                    <option value="sbi">State Bank of India</option>
+                    <option value="hdfc">HDFC Bank</option>
+                    <option value="icici">ICICI Bank</option>
+                    <option value="axis">Axis Bank</option>
+                    <option value="kotak">Kotak Mahindra Bank</option>
+                </select>
+            </div>
+            <button class="btn-pay">Pay ₹2,800.00</button>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        const tabs = document.querySelectorAll('.tab');
+        const contents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // UPI option selection
+        const upiOptions = document.querySelectorAll('.upi-option');
+        upiOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                upiOptions.forEach(o => o.classList.remove('selected'));
+                option.classList.add('selected');
+            });
+        });
+
+        // Format card number with spaces
+        const cardInput = document.querySelector('input[placeholder="1234 5678 9012 3456"]');
+        cardInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\s/g, '');
+            if (value.length > 0) {
+                value = value.match(new RegExp('.{1,4}', 'g')).join(' ');
+            }
+            e.target.value = value;
+        });
+
+        // Format expiry date
+        const expiryInput = document.querySelector('input[placeholder="MM/YY"]');
+        expiryInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.slice(0, 2) + '/' + value.slice(2, 4);
+            }
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>
