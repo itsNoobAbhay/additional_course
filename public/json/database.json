@@ -4,7 +4,6 @@
         "lname": "a",
         "roll_no": "1",
         "branch": "IT",
-        "year": "3",
         "mobile_number": "1"
     },
     {
@@ -12,7 +11,6 @@
         "lname": "sawant",
         "roll_no": "34",
         "branch": "IT",
-        "year": "3",
         "mobile_number": "1234"
     },
     {
@@ -20,7 +18,6 @@
         "lname": "Smith",
         "roll_no": "2",
         "branch": "IT",
-        "year": "2",
         "mobile_number": "1234"
     },
     {
@@ -28,7 +25,6 @@
         "lname": "kuwar",
         "roll_no": "3",
         "branch": "IT",
-        "year": "3",
         "mobile_number": "1234"
     },
     {
@@ -36,7 +32,6 @@
         "lname": "salian",
         "roll_no": "30",
         "branch": "IT",
-        "year": "3",
         "mobile_number": "9324075922"
     },
     {
@@ -44,7 +39,6 @@
         "lname": "sristla",
         "roll_no": "48",
         "branch": "IT",
-        "year": "3",
         "mobile_number": "8369609068"
     },
     {
@@ -52,7 +46,6 @@
         "lname": "chande",
         "roll_no": "19",
         "branch": "IT",
-        "year": "3",
         "mobile_number": "9321436528"
     },
     {
@@ -60,7 +53,6 @@
         "lname": "gaikwad",
         "roll_no": "35",
         "branch": "IT",
-        "year": "3",
         "mobile_number": "7506149021"
     },
     {
@@ -68,7 +60,6 @@
         "lname": "shinde",
         "roll_no": "41",
         "branch": "IT",
-        "year": "3",
         "mobile_number": "8591219224"
     },
     {
@@ -76,7 +67,6 @@
         "lname": "narayankar",
         "roll_no": "11",
         "branch": "IT",
-        "year": "3",
         "mobile_number": "7039778481"
     }
 
