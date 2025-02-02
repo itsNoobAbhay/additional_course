@@ -26,8 +26,8 @@ app.post('/course', (req, res) => {
 
     const studentExists = students.some(
         (student) =>
-            student.fname == fname &&
-            student.lname == lname &&
+            student.fname.toLowerCase() == fname.toLowerCase() &&
+            student.lname.toLowerCase() == lname.toLowerCase() &&
             student.roll_no == roll_no &&
             student.branch == branch &&
             student.mobile_number == mobile_number
