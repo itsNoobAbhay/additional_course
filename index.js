@@ -17,6 +17,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'root.html'));
 });
 
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'login_page.html'));
+});
+
 app.post('/course', (req, res) => {
 
     const { fname, lname, roll_no, branch, sem, mobile_number, otp } = req.body
@@ -35,7 +40,7 @@ app.post('/course', (req, res) => {
     if (!studentExists) {
         // Student not found
         console.log("Current student not in database")
-        return res.redirect('/?error=1');
+        return res.redirect('/login?error=1');
 
     }
 
