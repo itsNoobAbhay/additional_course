@@ -2,49 +2,223 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    background: linear-gradient(to right, #4A90E2, #50C9C3);
+    background: #1a1f2e;
+    color: #f5f5f5;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Header Section */
+.header {
     height: 100vh;
+    position: relative;
     display: flex;
-    align-items: center;
     justify-content: center;
-}
-
-.landing-container {
+    align-items: center;
     text-align: center;
-    background: white;
-    padding: 50px;
+    background: linear-gradient(135deg, #1a1f2e, #2c344b);
+    overflow: hidden;
+}
+
+/* Enhanced Particle Effect */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    background: #b0b7c3;
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+.particle:nth-child(1) { width: 3px; height: 3px; top: 10%; left: 20%; animation: pulse 5s infinite ease-in-out 0.5s; }
+.particle:nth-child(2) { width: 2px; height: 2px; top: 25%; left: 60%; animation: drift 6s infinite ease-in-out 1s; }
+.particle:nth-child(3) { width: 4px; height: 4px; top: 70%; left: 85%; animation: pulse 4s infinite ease-in-out 1.5s; }
+.particle:nth-child(4) { width: 1.5px; height: 1.5px; top: 50%; left: 15%; animation: drift 5.5s infinite ease-in-out 2s; }
+.particle:nth-child(5) { width: 2.5px; height: 2.5px; top: 30%; left: 90%; animation: pulse 4.5s infinite ease-in-out 0.8s; }
+.particle:nth-child(6) { width: 2px; height: 2px; top: 15%; left: 45%; animation: drift 6s infinite ease-in-out 0.3s; }
+.particle:nth-child(7) { width: 3px; height: 3px; top: 80%; left: 35%; animation: pulse 5s infinite ease-in-out 1.2s; }
+.particle:nth-child(8) { width: 1px; height: 1px; top: 40%; left: 75%; animation: drift 5s infinite ease-in-out 1.8s; }
+.particle:nth-child(9) { width: 2.5px; height: 2.5px; top: 60%; left: 5%; animation: pulse 4.5s infinite ease-in-out 0.6s; }
+.particle:nth-child(10) { width: 2px; height: 2px; top: 20%; left: 70%; animation: drift 6s infinite ease-in-out 1.4s; }
+.particle:nth-child(11) { width: 1.5px; height: 1.5px; top: 45%; left: 30%; animation: pulse 5.5s infinite ease-in-out 0.9s; }
+.particle:nth-child(12) { width: 3px; height: 3px; top: 85%; left: 55%; animation: drift 4s infinite ease-in-out 1.6s; }
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    max-width: 900px;
+}
+
+h1 {
+    font-size: 3.5em;
+    font-weight: 700;
+    background: linear-gradient(90deg, #b0b7c3, #e0e5ec);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: fadeIn 1.5s ease-out;
+    text-shadow: 0 0 10px rgba(176, 183, 195, 0.3);
+}
+
+.tagline {
+    font-size: 1.6em;
+    margin: 20px 0;
+    color: #f5f5f5;
+    opacity: 0;
+    animation: slideUp 1.5s ease-out 0.5s forwards;
+}
+
+.subtext {
+    font-size: 1.2em;
+    color: #d4d4d4;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: slideUp 1.5s ease-out 1s forwards;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-btn {
+    padding: 14px 50px;
+    background: #2c344b;
+    color: #f5f5f5;
+    text-decoration: none;
+    font-size: 1.3em;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    border: 2px solid #b0b7c3;
+}
+
+.login-btn:hover {
+    background: #b0b7c3;
+    color: #1a1f2e;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(176, 183, 195, 0.4);
+}
+
+/* Benefits Section */
+.benefits {
+    padding: 80px 20px;
+    text-align: center;
+    background: #f9f9f9;
+    color: #2c344b;
+}
+
+.benefits h2 {
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    color: #1a1f2e;
+}
+
+.benefits-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.benefit-card {
+    background: #fff;
+    padding: 25px;
+    width: 100%;
+    max-width: 320px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    animation: slideUp 1s ease-out forwards;
+    opacity: 0;
 }
 
-.landing-content h1 {
-    font-size: 28px;
+.benefit-card:nth-child(1) { animation-delay: 0.2s; }
+.benefit-card:nth-child(2) { animation-delay: 0.4s; }
+.benefit-card:nth-child(3) { animation-delay: 0.6s; }
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+}
+
+.benefit-card h3 {
+    font-size: 1.4em;
+    color: #2c344b;
     margin-bottom: 15px;
-    color: #333;
 }
 
-.landing-content p {
-    font-size: 18px;
+.benefit-card p {
     color: #555;
-    margin-bottom: 20px;
+    font-size: 1.1em;
 }
 
-.landing-content button {
-    background-color: #4A90E2;
-    color: white;
-    padding: 12px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
+/* Footer */
+.footer {
+    background: #1a1f2e;
+    color: #d4d4d4;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
 }
 
-.landing-content button:hover {
-    background-color: #357ABD;
+/* Animations */
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+@keyframes drift {
+    0%, 100% { transform: translate(0, 0); opacity: 0.5; }
+    50% { transform: translate(10px, -5px); opacity: 0.7; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    h1 { font-size: 3em; }
+    .tagline { font-size: 1.4em; }
+    .subtext { font-size: 1.1em; }
+    .login-btn { padding: 12px 40px; font-size: 1.2em; }
+    .benefits-grid { gap: 20px; }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2.5em; }
+    .tagline { font-size: 1.2em; }
+    .subtext { font-size: 1em; }
+    .header-content { padding: 15px; }
+    .benefits { padding: 50px 15px; }
+    .benefits h2 { font-size: 2em; }
+    .benefit-card { max-width: 90%; }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 2em; }
+    .tagline { font-size: 1em; }
+    .subtext { font-size: 0.9em; }
+    .login-btn { padding: 10px 30px; font-size: 1em; }
+    .benefits h2 { font-size: 1.8em; }
+    .benefit-card h3 { font-size: 1.2em; }
+    .benefit-card
+    p { font-size: 1em; }
 }
