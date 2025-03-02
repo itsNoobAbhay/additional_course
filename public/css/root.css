@@ -58,12 +58,16 @@ body {
 .header-content {
     position: relative;
     z-index: 2;
-    padding: 20px;
-    max-width: 900px;
+    padding: 30px;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px; /* Increased gap for better separation */
 }
 
 h1 {
-    font-size: 3.5em;
+    font-size: 2.8em;
     font-weight: 700;
     background: linear-gradient(90deg, #b0b7c3, #e0e5ec);
     -webkit-background-clip: text;
@@ -73,33 +77,33 @@ h1 {
 }
 
 .tagline {
-    font-size: 1.6em;
-    margin: 20px 0;
+    font-size: 1.4em;
     color: #f5f5f5;
     opacity: 0;
     animation: slideUp 1.5s ease-out 0.5s forwards;
 }
 
 .subtext {
-    font-size: 1.2em;
+    font-size: 1.1em;
     color: #d4d4d4;
-    margin-bottom: 40px;
     opacity: 0;
     animation: slideUp 1.5s ease-out 1s forwards;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 500px;
 }
 
 .login-btn {
-    padding: 14px 50px;
+    display: block; /* Ensures each button takes its own row */
+    padding: 12px 40px;
     background: #2c344b;
     color: #f5f5f5;
     text-decoration: none;
-    font-size: 1.3em;
+    font-size: 1.2em;
     border-radius: 50px;
     transition: all 0.3s ease;
     border: 2px solid #b0b7c3;
+    text-align: center;
+    width: 100%;
+    max-width: 300px; /* Consistent width for both buttons */
 }
 
 .login-btn:hover {
@@ -194,19 +198,11 @@ h1 {
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
-    h1 { font-size: 3em; }
-    .tagline { font-size: 1.4em; }
-    .subtext { font-size: 1.1em; }
-    .login-btn { padding: 12px 40px; font-size: 1.2em; }
-    .benefits-grid { gap: 20px; }
-}
-
 @media (max-width: 768px) {
     h1 { font-size: 2.5em; }
     .tagline { font-size: 1.2em; }
     .subtext { font-size: 1em; }
-    .header-content { padding: 15px; }
+    .header-content { padding: 20px; }
     .benefits { padding: 50px 15px; }
     .benefits h2 { font-size: 2em; }
     .benefit-card { max-width: 90%; }
@@ -216,9 +212,8 @@ h1 {
     h1 { font-size: 2em; }
     .tagline { font-size: 1em; }
     .subtext { font-size: 0.9em; }
-    .login-btn { padding: 10px 30px; font-size: 1em; }
+    .login-btn { padding: 10px 35px; font-size: 1em; }
     .benefits h2 { font-size: 1.8em; }
     .benefit-card h3 { font-size: 1.2em; }
-    .benefit-card
-    p { font-size: 1em; }
+    .benefit-card p { font-size: 1em; }
 }

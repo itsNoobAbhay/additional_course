@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Course Fee Payer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #1a1f2e;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #f5f5f5;
+            margin-bottom: 30px;
+        }
+
+        .payment-card {
+            background: #e5e7eb;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 1px solid #d1d5db;
+        }
+
+        .course-details h2 {
+            font-size: 1.8em;
+            color: #1a1f2e;
+            margin-bottom: 15px;
+        }
+
+        .course-details p {
+            font-size: 1em;
+            color: #4b5563;
+            margin-bottom: 20px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            padding: 10px 20px;
+            background: #d1d5db;
+            color: #1a1f2e;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .tab-button.active {
+            background: #1a1f2e;
+            color: #f5f5f5;
+        }
+
+        .tab-button:hover:not(.active) {
+            background: #b0b7c3;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .upi-options {
+            text-align: center;
+        }
+
+        .upi-logos {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .upi-logos img {
+            width: 60px;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .upi-options p {
+            font-size: 0.95em;
+            color: #4b5563;
+            margin-bottom: 15px;
+        }
+
+        .upi-options input {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            background: #fff;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .upi-options input::placeholder {
+            color: #9ca3af;
+        }
+
+        .debit-form .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .debit-form label {
+            display: block;
+            font-size: 1em;
+            color: #4b5563;
+            margin-bottom: 5px;
+        }
+
+        .debit-form input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            background: #fff;
+            color: #333;
+        }
+
+        .debit-form input::placeholder {
+            color: #9ca3af;
+        }
+
+        button {
+            padding: 10px 40px;
+            background: #1a1f2e;
+            color: #f5f5f5;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #2c344b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2em; }
+            .payment-card { padding: 20px; }
+            .course-details h2 { font-size: 1.5em; }
+            .course-details p { font-size: 0.9em; }
+            .tab-button { padding: 8px 15px; font-size: 0.9em; }
+            .upi-logos img { width: 50px; }
+            .upi-options p { font-size: 0.85em; }
+            .upi-options input { font-size: 0.9em; }
+            .debit-form input { font-size: 0.9em; }
+            button { padding: 8px 30px; font-size: 0.9em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Payment</h1>
+        <div class="payment-card">
+            <div class="course-details" id="course-details">
+                <h2 id="course-name"></h2>
+                <p id="course-info"></p>
+            </div>
+            <div class="tabs">
+                <button class="tab-button active" onclick="showTab('upi')">UPI</button>
+                <button class="tab-button" onclick="showTab('debit')">Debit Card</button>
+            </div>
+            <div class="tab-content active" id="upi">
+                <div class="upi-options">
+                    <div class="upi-logos">
+                        <img src="assets/gpay.jpg" alt="Google Pay">
+                        <img src="assets/paytm.jpg" alt="Paytm">
+                        <img src="assets/phonepay.png" alt="PhonePe">
+                    </div>
+                    <p>Select your UPI app above and enter your UPI ID below.</p>
+                    <input type="text" id="upi-id" placeholder="Enter UPI ID (e.g., yourname@upi)">
+                    <button onclick="alert('UPI payment initiated! (Placeholder)')">Pay Now</button>
+                </div>
+            </div>
+            <div class="tab-content" id="debit">
+                <div class="debit-form">
+                    <div class="form-group">
+                        <label for="card-number">Card Number</label>
+                        <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+                    </div>
+                    <div class="form-group">
+                        <label for="card-holder">Card Holder Name</label>
+                        <input type="text" id="card-holder" placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="expiry-date">Expiry Date</label>
+                        <input type="text" id="expiry-date" placeholder="MM/YY" maxlength="5">
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" placeholder="123" maxlength="3">
+                    </div>
+                    <button onclick="alert('Debit Card payment initiated! (Placeholder)')">Pay Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get course data from URL
+        const params = new URLSearchParams(window.location.search);
+        const courseData = JSON.parse(decodeURIComponent(params.get('course')));
+
+        // Display course details
+        document.getElementById('course-name').textContent = courseData.name;
+        document.getElementById('course-info').textContent = `${courseData.hours} hrs | Teacher: ${courseData.teacher} | Cost: ₹${courseData.cost} | ${courseData.description}`;
+
+        // Tab functionality
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+
+            document.getElementById(tabId).classList.add('active');
+            document.querySelector(`.tab-button[onclick="showTab('${tabId}')"]`).classList.add('active');
+        }
+    </script>
+</body>
+</html>
