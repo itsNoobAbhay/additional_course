@@ -213,9 +213,38 @@
             <!-- Add Students Section -->
             <div class="section">
                 <h2>Add Students</h2>
+
+                <div class="form-group">
+                    <label for="student-name">First Name</label>
+                    <input type="text" id="student-name" placeholder="Enter first name" required>
+                </div>
+                <div class="form-group">
+                    <label for="student-surname">Surname</label>
+                    <input type="text" id="student-surname" placeholder="Enter surname" required>
+                </div>
+                <div class="form-group">
+                    <label for="student-department">Department</label>
+                    <select id="student-department" required style="width: 100%; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 5px; background: #fff; cursor: pointer;">
+                        <option value="" disabled selected>Select Department</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Information Technology">Information Technology</option>
+                        <option value="Data Science">Data Science</option>
+                        <option value="Computer Applications">Computer Applications</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="student-mobile">Mobile Number</label>
+                    <input type="tel" id="student-mobile" placeholder="Enter mobile number" required 
+                        maxlength="10" pattern="\d{10}"
+                        style="width: 100%; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 5px;"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)">
+                    <small id="mobile-error" style="color: red; display: none;">Must be exactly 10 digits</small>
+                </div>
+
                 <div class="form-group">
                     <label for="student-email">Email ID</label>
                     <input type="email" id="student-email" placeholder="Enter student email" required>
+                    <small id="email-error" style="color: red; display: none;">Enter a valid email</small>
                 </div>
                 <div class="form-group">
                     <label for="student-password">Password</label>
@@ -364,5 +393,31 @@
             });
         }
     </script>
+
+<script>
+    document.getElementById("add-student").addEventListener("click", function(event) {
+        let mobileInput = document.getElementById("student-mobile");
+        let emailInput = document.getElementById("student-email");
+        let mobileError = document.getElementById("mobile-error");
+        let emailError = document.getElementById("email-error");
+        let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        // Validate mobile number (exactly 10 digits)
+        if (mobileInput.value.length !== 10) {
+            mobileError.style.display = "block";
+            event.preventDefault();  // Stop form submission
+        } else {
+            mobileError.style.display = "none";
+        }
+
+        // Validate email format
+        if (!emailPattern.test(emailInput.value)) {
+            emailError.style.display = "block";
+            event.preventDefault();  // Stop form submission
+        } else {
+            emailError.style.display = "none";
+        }
+    });
+</script>
 </body>
 </html>
